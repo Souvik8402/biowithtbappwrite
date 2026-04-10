@@ -113,7 +113,7 @@ export default function LectureList({ classId, chapter, onBack }) {
                 rel="noopener noreferrer"
                 className="flex-shrink-0 bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-1"
               >
-                📄 View
+                📄 Download
               </a>
             </div>
           ))}
