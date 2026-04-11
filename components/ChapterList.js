@@ -50,9 +50,9 @@ export default function ChapterList({ classId, onSelect, onBack }) {
         <div>
           <p
             className="text-xs tracking-widest uppercase mb-1"
-            style={{ color: "#00d4ff55", letterSpacing: "0.25em" }}
+            style={{ color: "#00d4ff55", letterSpacing: "0.2em" }}
           >
-            Class {classId} · Step 02
+            Class {classId}
           </p>
           <h2 className="text-2xl font-bold" style={{ color: "#e2e8f0" }}>
             Chapters
