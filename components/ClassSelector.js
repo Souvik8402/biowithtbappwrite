@@ -73,12 +73,6 @@ export default function ClassSelector({ onSelect }) {
 
       {/* Section header */}
       <div className="mb-10">
-        <p
-          className="text-xs uppercase mb-2"
-          style={{ color: "#00d4ff44", letterSpacing: "0.3em" }}
-        >
-          Step 01
-        </p>
         <h2
           className="text-3xl font-bold mb-2"
           style={{
