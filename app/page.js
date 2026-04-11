@@ -1,6 +1,6 @@
 // app/page.js
 // HOME PAGE — password gate → class select → chapter list → lecture list.
-// UI: futuristic dark theme. Logic is unchanged.
+// Logic completely unchanged. TopBar upgraded with richer gradient + glow.
 
 "use client";
 
@@ -12,9 +12,9 @@ import ChapterList from "@/components/ChapterList";
 import LectureList from "@/components/LectureList";
 
 export default function HomePage() {
-  const [isLoggedIn,     setIsLoggedIn]     = useState(false);
-  const [selectedClass,  setSelectedClass]  = useState(null);
-  const [selectedChapter,setSelectedChapter]= useState(null);
+  const [isLoggedIn,      setIsLoggedIn]      = useState(false);
+  const [selectedClass,   setSelectedClass]   = useState(null);
+  const [selectedChapter, setSelectedChapter] = useState(null);
 
   if (!isLoggedIn) {
     return <PasswordScreen onSuccess={() => setIsLoggedIn(true)} />;
@@ -22,7 +22,7 @@ export default function HomePage() {
 
   if (!selectedClass) {
     return (
-      <main className="min-h-screen bg-[#080c14]">
+      <main className="min-h-screen" style={{ background: "#05080f" }}>
         <TopBar />
         <ClassSelector onSelect={(cls) => setSelectedClass(cls)} />
       </main>
@@ -31,7 +31,7 @@ export default function HomePage() {
 
   if (!selectedChapter) {
     return (
-      <main className="min-h-screen bg-[#080c14]">
+      <main className="min-h-screen" style={{ background: "#05080f" }}>
         <TopBar />
         <ChapterList
           classId={selectedClass}
@@ -43,7 +43,7 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#080c14]">
+    <main className="min-h-screen" style={{ background: "#05080f" }}>
       <TopBar />
       <LectureList
         classId={selectedClass}
@@ -54,42 +54,60 @@ export default function HomePage() {
   );
 }
 
-// ── Top navigation bar ────────────────────────────────────────────
+// ── Top navigation bar ─────────────────────────────────────────────────
 function TopBar() {
   return (
     <div
-      className="px-5 py-3 flex items-center justify-between relative z-10"
+      className="px-6 py-4 flex items-center justify-between relative z-10"
       style={{
-        background: "linear-gradient(180deg, #0d1526 0%, #080c1400 100%)",
-        borderBottom: "1px solid #1a2d4a",
+        background: "linear-gradient(180deg, #0a1020f0 0%, #05080f00 100%)",
+        borderBottom: "1px solid",
+        borderImage: "linear-gradient(90deg, transparent, #00d4ff22, #7c3aed22, transparent) 1",
       }}
     >
-      {/* Brand */}
-      <span
-        className="font-bold text-lg tracking-widest glow-text"
-        style={{ color: "#00d4ff", letterSpacing: "0.15em" }}
-      >
-        ⬡ BIOwithTB
-      </span>
+      {/* ── Brand mark ──────────────────────────────────────────────── */}
+      <div className="flex items-center gap-2.5">
+        {/* Hex icon */}
+        <div
+          className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold"
+          style={{
+            background: "linear-gradient(135deg, #00d4ff22, #7c3aed22)",
+            border: "1px solid #00d4ff33",
+            color: "#00d4ff",
+            boxShadow: "0 0 10px #00d4ff22",
+          }}
+        >
+          ⬡
+        </div>
+        <span
+          className="font-bold text-sm tracking-widest glow-text"
+          style={{ color: "#00d4ff", letterSpacing: "0.18em" }}
+        >
+          BIOwithTB
+        </span>
+      </div>
 
-      {/* Admin link */}
+      {/* ── Admin button ─────────────────────────────────────────────── */}
       <Link
         href="/admin"
         className="text-xs tracking-widest uppercase px-4 py-1.5 rounded-full transition-all"
         style={{
-          color: "#00d4ff99",
-          border: "1px solid #00d4ff33",
-          letterSpacing: "0.12em",
+          color: "#00d4ff55",
+          border: "1px solid #00d4ff22",
+          letterSpacing: "0.15em",
+          background: "transparent",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = "#00d4ff";
-          e.currentTarget.style.borderColor = "#00d4ff66";
-          e.currentTarget.style.boxShadow = "0 0 12px #00d4ff33";
+          e.currentTarget.style.color       = "#00d4ff";
+          e.currentTarget.style.borderColor = "#00d4ff55";
+          e.currentTarget.style.background  = "#00d4ff0a";
+          e.currentTarget.style.boxShadow   = "0 0 16px #00d4ff22";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = "#00d4ff99";
-          e.currentTarget.style.borderColor = "#00d4ff33";
-          e.currentTarget.style.boxShadow = "none";
+          e.currentTarget.style.color       = "#00d4ff55";
+          e.currentTarget.style.borderColor = "#00d4ff22";
+          e.currentTarget.style.background  = "transparent";
+          e.currentTarget.style.boxShadow   = "none";
         }}
       >
         Admin
